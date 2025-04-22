@@ -19,7 +19,7 @@ function getSelected() {
                 if (section.toLowerCase().includes(question.toLowerCase()) && question.trim() !== "") {
 
                     console.log(section);
-                    answers.push(section + "\n" + config[section].answer);
+                    answers.push(section + "\n" + config[section].answer + "\n");
                 }
             }
 
@@ -52,10 +52,20 @@ function parseIni(text) {
 
     return result;
 }
+function animation() {
+    console.log(document.getElementById("anima-input").checked);
+    if (document.getElementById("anima-input").checked === false) {
+        document.querySelector(".scroll-banner p").style = "animation:none;";
+    }
+    else {
+        document.querySelector(".scroll-banner p").style = "animation:scroll-text 10s 1s ease-in-out infinite alternate;"
+    }
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".main-div #query").addEventListener("focusin", getSelected);
     document.getElementById('query').addEventListener('input', getSelected);
+    document.getElementById("anima-input").addEventListener("click", animation);
 });
 
 
